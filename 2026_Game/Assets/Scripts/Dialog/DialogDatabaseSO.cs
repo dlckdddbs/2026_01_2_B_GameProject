@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "DialogDatabaseSO", menuName = "Dialog System/DialogDatabaseSO")]
+[CreateAssetMenu(fileName = "DialogDatabaseSO", menuName = "Dialog/DialogDatabaseSO")]
 public class DialogDatabaseSO : ScriptableObject
 {
     public List<DialgSO> dialogs = new List<DialgSO>();

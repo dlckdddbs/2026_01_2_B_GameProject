@@ -23,7 +23,7 @@ public class DialogRowData
     public string characterName;
     public string text;
     public int? nextId;
-    public string protraitPath;
+    public string portraitPath;
     public string choiceText;
     public int? choiceNextId;
  }
@@ -221,10 +221,11 @@ public class jSANtOscriptableConverter : EditorWindow
                 dialgSO.text = rowdata.text;
                 dialgSO.nextId = rowdata.nextId.HasValue ? rowdata.nextId.Value : -1;
                 dialgSO.choices = new List<DialogChoiceSO>();
+
                 //초상화 로드(경로가 있을 경우)
-                if (!string.IsNullOrEmpty(rowdata.protraitPath))
+                if (!string.IsNullOrEmpty(rowdata.portraitPath))
                 {
-                    dialgSO.protrait = Resources.Load<Sprite>(rowdata.protraitPath);
+                    dialgSO.protrait = Resources.Load<Sprite>(rowdata.portraitPath);
                     if (dialgSO.protrait == null)
                     {
                         Debug.LogWarning($"대화 {rowdata.id}의 초상화를 찾을 수 없습니다.");
@@ -282,7 +283,7 @@ public class jSANtOscriptableConverter : EditorWindow
             //3단계 : 대화 스크립터블 오브젝트 저장
             foreach(var dialog in CreatDialogs)
             {
-                string assetPath = $"{outputFolor}/Dialog {dialog.id.ToString("D4")}.asset";
+                string assetPath = $"{outputFolor}/Dialog_{dialog.id.ToString("D4")}.asset";
                 AssetDatabase.CreateAsset(dialog, assetPath);
 
                 //에셋 이름 지정 
