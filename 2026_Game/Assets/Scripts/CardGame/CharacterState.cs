@@ -31,11 +31,25 @@ public class CharacterState : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if (DamageEffectManager.instance != null)
+        {
+            Vector3 position = transform.position;
+            position += new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(1f, 1.5f), 0);
+
+            DamageEffectManager.instance.ShowDamager(position, damage, false);
+        }
     }
 
     public void Heal(int amout)
     {
         currentHealth += amout;
+        if (DamageEffectManager.instance != null)
+        {
+            Vector3 position = transform.position;
+            position += new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(1f, 1.5f), 0);
+
+            DamageEffectManager.instance.ShowDamager(position, amout, false);
+        }
     }
 
     public void UseMana(int amout)
